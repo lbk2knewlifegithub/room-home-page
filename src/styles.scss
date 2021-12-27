@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base {
+  :root {
+    --dark-gray: 0, 0%, 63%;
+    --black: 0, 0%, 0%;
+    --white: 0, 0%, 100%;
+    --very-dark-gray: 0, 0%, 27%;
+  }
+
+  //CUSTOM APPLY HERE
+  .btn {
+    @apply rounded-md px-5 py-6;
+  }
+}
