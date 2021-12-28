@@ -20,10 +20,16 @@ export function listAnimation(option?: CustomAnimation) {
         query(
           '*',
           [
-            style({ opacity: 0, transform: 'translateY(-100%)' }),
+            animateChild(),
             stagger(
               100,
-              group([animate('{{duration}}ms {{delayEnter}}ms {{timing}}')])
+              group([
+                style({ opacity: 0, transform: 'translateY(-100%)' }),
+                animate(
+                  '{{duration}}ms {{delayEnter}}ms {{timing}}',
+                  style({ opacity: 1, transform: 'translateY(0)' })
+                ),
+              ])
             ),
           ],
           { optional: true }
