@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'lbk-shop-now',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <a routerLink="/" class="flex items-center gap-8 group">
+    <a routerLink="/" class="inline-flex items-center gap-8 group">
       <span class="uppercase tracking-[8px] font-semibold text-muted-900"
         >Shop now</span
       >

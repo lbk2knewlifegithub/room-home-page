@@ -1,3 +1,4 @@
+import { CarouselComponent } from './carousel/carousel.component';
 import { NavigationComponent } from './navigation.component';
 import { ProductCarouselComponent } from './product-carousel.component';
 import { ProductFeatureComponent } from './product-feature.component';
@@ -10,4 +11,5 @@ export const COMPONENTS = [
   ProductFeatureComponent,
   ProductCarouselComponent,
   ShopNowComponent,
+  CarouselComponent,
 ];

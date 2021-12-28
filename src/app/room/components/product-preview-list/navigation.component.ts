@@ -13,7 +13,7 @@ import {
     <div class="flex bg-black">
       <!--      previous-->
       <div
-        (click)="onPrevious.emit()"
+        (click)="previous.emit()"
         class="flex items-center justify-center cursor-pointer w-14 h-14 bg-red"
       >
         <img
@@ -26,7 +26,7 @@ import {
 
       <!--     next -->
       <div
-        (click)="onNext.emit()"
+        (click)="next.emit()"
         class="flex items-center justify-center cursor-pointer w-14 h-14 bg-red"
       >
         <img
@@ -41,6 +41,6 @@ import {
   `,
 })
 export class NavigationComponent {
-  @Output('onNext') onNext = new EventEmitter<void>();
-  @Output('onPrevious') onPrevious = new EventEmitter<void>();
+  @Output() next = new EventEmitter<void>();
+  @Output() previous = new EventEmitter<void>();
 }

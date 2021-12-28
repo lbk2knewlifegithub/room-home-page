@@ -1,0 +1,17 @@
+<div class="h-full overflow-hidden">
+  <!-- slide -->
+  <div #slide [style]="translate(slide)" (transitionend)="onTransitionEnd(slide)" class="flex h-full">
+    <ng-container *ngFor="let product of products; index as i">
+
+      <!-- image desktop -->
+      <img [style]="imageWidth(slide)" class="hidden slide lg:block" [src]="product.srcDesktop" [alt]="product.name" />
+      <!-- end image desktop -->
+
+      <!-- image mobile -->
+      <img [style]="imageWidth(slide)" class="slide lg:hidden" [src]="product.srcMobile" [alt]="product.name" />
+      <!-- end image mobile -->
+
+    </ng-container>
+  </div>
+  <!-- end slide -->
+</div>

@@ -2,23 +2,30 @@ import {
   ChangeDetectionStrategy,
   Component,
   Input,
-  OnInit
+  OnInit,
+  ViewChild
 } from '@angular/core';
 import { Product } from '@lbk/room/models';
+import { ProductCarouselComponent } from './product-carousel.component';
 
 @Component({
   selector: 'lbk-product-preview-list',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <section class="space-y-16">
+    <section class="xl:grid xl:grid-cols-5 xl:h-full">
       <lbk-product-carousel
-        class="block"
+        class="xl:col-span-3 xl:overflow-hidden"
         [products]="products"
+        [(product)]="product"
+        (next)="onNext()"
+        (previous)="onPrevious()"
       ></lbk-product-carousel>
 
       <lbk-product-feature
-        class="block"
+        class="block max-w-2xl mx-auto  xl:col-span-2"
         [product]="product"
+        (next)="onNext()"
+        (previous)="onPrevious()"
       ></lbk-product-feature>
     </section>
   `,
@@ -26,9 +33,20 @@ import { Product } from '@lbk/room/models';
 export class ProductPreviewListComponent implements OnInit {
   @Input() products!: Product[];
 
+  @ViewChild(ProductCarouselComponent)
+  carousel!: ProductCarouselComponent;
+
   product!: Product;
 
   ngOnInit(): void {
     this.product = this.products[0];
+  }
+
+  onNext() {
+    this.carousel.carousel.next();
+  }
+
+  onPrevious() {
+    this.carousel.carousel.previous();
   }
 }

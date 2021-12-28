@@ -1,31 +1,32 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild
+} from '@angular/core';
 import { Product } from '@lbk/room/models';
-import { OwlOptions } from 'ngx-owl-carousel-o';
+import { CarouselComponent } from './carousel/carousel.component';
 
 @Component({
   selector: 'lbk-product-carousel',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="relative">
+    <div class="relative xl:h-full ">
       <!-- product image -->
-      <owl-carousel-o #owl [options]="customOptions">
-        <ng-container *ngFor="let product of products">
-          <ng-template carouselSlide [id]="product.name">
-            <img
-              class="object-cover object-center"
-              [src]="product.srcMobile"
-              [alt]="product.name"
-              [title]="product.name"
-            />
-          </ng-template>
-        </ng-container>
-      </owl-carousel-o>
+      <lbk-carousel
+        #carousel
+        class="xl:h-full"
+        (indexChange)="onTranslated($event)"
+        [products]="products"
+      ></lbk-carousel>
       <!-- end product image -->
 
       <lbk-navigation
-        (onNext)="owl.next()"
-        (onPrevious)="owl.prev()"
-        class="absolute bottom-0 right-0 block z-50"
+        (next)="next.emit()"
+        (previous)="previous.emit()"
+        class="absolute bottom-0 right-0 block z-50 xl:hidden"
       ></lbk-navigation>
     </div>
   `,
@@ -33,20 +34,24 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 export class ProductCarouselComponent {
   @Input() products!: Product[];
 
-  customOptions: OwlOptions = {
-    loop: true,
-    mouseDrag: true,
-    touchDrag: true,
-    pullDrag: true,
-    dots: false,
-    navSpeed: 700,
-    responsive: {
-      0: {
-        items: 1,
-      },
-    },
-  };
+  @Input() product!: Product;
+  @Output() productChange = new EventEmitter<Product>();
 
-  onNext() {}
-  onPrevious() {}
+  @Output() next = new EventEmitter<void>();
+  @Output() previous = new EventEmitter<void>();
+
+  @ViewChild(CarouselComponent)
+  carousel!: CarouselComponent;
+
+  onTranslated(index: number) {
+    const tmp = this.products[index - 1];
+    if (!tmp) return;
+    this.product = tmp;
+    this.productChange.emit(this.product);
+  }
+
+  get src(): string {
+    const matched = window.matchMedia('(min-width: 1024px)').matches;
+    return matched ? this.product.srcDesktop : this.product.srcMobile;
+  }
 }

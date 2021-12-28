@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'lbk-about-content',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <main class="p-6 space-y-4">
+    <div class="p-6 space-y-4 sm:px-10 md:px-20 xl:p-10 xl:h-full xl:grid xl:place-content-center">
       <h2 class="uppercase font-bold tracking-[6px]">About our furniture</h2>
       <p class="text-sm text-muted-300 font-medium">
         Out multifunctional collection blends design and function to sult your
@@ -14,7 +14,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         between. Product specialists are available to help you create your cream
         space.
       </p>
-    </main>
+    </div>
   `,
 })
 export class AboutContentComponent {}

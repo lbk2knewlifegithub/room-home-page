@@ -1,14 +1,22 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output
+} from '@angular/core';
 import { Product } from '@lbk/room/models';
 
 @Component({
   selector: 'lbk-product-feature',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="relative p-6">
+    <div
+      class="relative p-8 py-24 xl:p-20 xl:h-full xl:grid xl:place-content-center"
+    >
       <!-- text -->
       <div>
-        <h1 class="text-3xl font-bold">
+        <h1 class="text-3xl font-bold md:text-4xl">
           {{ product.name }}
         </h1>
 
@@ -23,9 +31,9 @@ import { Product } from '@lbk/room/models';
       <!--    end shop now-->
 
       <lbk-navigation
-        (onNext)="onNext()"
-        (onPrevious)="onPrevious()"
-        class="absolute bottom-0 left-0 hidden lg:block"
+        (next)="next.emit()"
+        (previous)="previous.emit()"
+        class="absolute bottom-0 left-0 hidden xl:block"
       >
       </lbk-navigation>
     </div>
@@ -34,7 +42,6 @@ import { Product } from '@lbk/room/models';
 export class ProductFeatureComponent {
   @Input() product!: Product;
 
-  onNext() {}
-
-  onPrevious() {}
+  @Output() next = new EventEmitter<void>();
+  @Output() previous = new EventEmitter<void>();
 }

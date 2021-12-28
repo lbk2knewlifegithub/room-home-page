@@ -1,6 +1,3 @@
-@import "node_modules/ngx-owl-carousel-o/lib/styles/scss/owl.carousel";
-@import "node_modules/ngx-owl-carousel-o/lib/styles/scss/owl.theme.default";
-
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
@@ -15,6 +12,11 @@
 }
 
 @layer components {
+  .container-large {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
   .animate-link {
     position: relative;
     display: inline-block;
