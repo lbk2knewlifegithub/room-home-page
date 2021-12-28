@@ -12,7 +12,7 @@ import { Product } from '@lbk/room/models';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div
-      class="relative p-8 py-24 xl:p-20 xl:h-full xl:grid xl:place-content-center"
+      class="relative p-8 py-24 xl:p-20 xl:pr-10 xl:h-full xl:grid xl:place-content-center"
     >
       <!-- text -->
       <div>
@@ -20,7 +20,7 @@ import { Product } from '@lbk/room/models';
           {{ product.name }}
         </h1>
 
-        <p class="mt-6 text-sm text-muted-300 font-semibold">
+        <p class="mt-6 text-sm text-muted-300 font-medium">
           {{ product.description }}
         </p>
         <!-- end text -->
