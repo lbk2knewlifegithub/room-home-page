@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'lbk-footer',
   template: `
     <footer class="relative">
-      <p class="text-center text-xs lg:fixed lg:bottom-0 lg:w-full">
+      <p class="text-center text-xs">
         Challenge by
         <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
           >Frontend Mentor</a
@@ -12,7 +12,7 @@ import { Component } from '@angular/core';
         <a
           class="text-sky-600 decoration-wavy"
           href="https://github.com/lbk2knewlifegithub"
-          >lbk2</a
+          >lbk2k</a
         >.
       </p>
     </footer>

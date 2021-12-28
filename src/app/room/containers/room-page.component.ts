@@ -8,7 +8,7 @@ import { fadeInOnEnterAnimation } from 'angular-animations';
   selector: 'lbk-room-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <main @fadeInOnEnter class="container-large xl:h-screen">
+    <main @fadeInOnEnter class="container-large xl:h-[800px]">
       <lbk-product-preview-list
         class="block xl:h-[65%] overflow-hidden"
         *ngIf="products$ | async as products"
