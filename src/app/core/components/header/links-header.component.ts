@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'lbk-links-header',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <ul>
+    <ul class="flex font-bold gap-5">
       <li><a routerLink="/">home</a></li>
       <li><a routerLink="/">shop</a></li>
       <li><a routerLink="/">about</a></li>
