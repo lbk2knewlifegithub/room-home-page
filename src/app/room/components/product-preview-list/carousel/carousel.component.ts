@@ -62,6 +62,17 @@ export class CarouselComponent
   }
 
   ngOnInit(): void {
+    this.lastClone = { ...this.products[this.products.length - 1] };
+    this.firstClone = { ...this.products[0] };
+
+    this.products = [this.lastClone, ...this.products, this.firstClone];
+
+    // Register event when user the window resize
+    this.appendSub = fromEvent(window, 'resize')
+      .pipe(debounceTime(100))
+      .subscribe(() => this._cd.detectChanges());
+
+    // Register event when user press left or right arrow key
     this.appendSub = fromEvent(window, 'keydown').subscribe((event) => {
       const key = (event as KeyboardEvent).key;
       if (key === 'ArrowLeft') {
@@ -71,15 +82,7 @@ export class CarouselComponent
       }
     });
 
-    this.lastClone = { ...this.products[this.products.length - 1] };
-    this.firstClone = { ...this.products[0] };
-
-    this.products = [this.lastClone, ...this.products, this.firstClone];
-
-    this.appendSub = fromEvent(window, 'resize')
-      .pipe(debounceTime(100))
-      .subscribe(() => this._cd.detectChanges());
-
+    // If autoPlay is true, create interval interval
     if (this.carouselOptions.autoPlay) {
       this.interval = this.createInterval();
     }
