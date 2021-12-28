@@ -9,36 +9,34 @@ import {
   selector: 'lbk-navigation',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <!--    navigator carousel-->
-    <div class="flex bg-black">
+    <div>
       <!--      previous-->
-      <div
-        (click)="previous.emit()"
-        class="flex items-center justify-center cursor-pointer w-14 h-14 bg-red"
-      >
-        <img
-          class="w-3"
-          src="/assets/images/icon-angle-left.svg"
-          alt="Angle Left"
-        />
-      </div>
+      <button (click)="previous.emit()" class="">
+        <img src="/assets/images/icon-angle-left.svg" alt="Angle Left" />
+      </button>
       <!--      end previous-->
 
       <!--     next -->
-      <div
-        (click)="next.emit()"
-        class="flex items-center justify-center cursor-pointer w-14 h-14 bg-red"
-      >
-        <img
-          class="w-3"
-          src="/assets/images/icon-angle-right.svg"
-          alt="Angle Right"
-        />
-      </div>
+      <button (click)="next.emit()">
+        <img src="/assets/images/icon-angle-right.svg" alt="Angle Right" />
+      </button>
       <!--     end next -->
     </div>
-    <!--    end navigator carousel-->
   `,
+  styles: [
+    `
+      div {
+        @apply inline-flex;
+
+        button {
+          @apply bg-black flex items-center justify-center  w-14 h-14 duration-300 hover:bg-black/70;
+          img {
+            @apply w-3;
+          }
+        }
+      }
+    `,
+  ],
 })
 export class NavigationComponent {
   @Output() next = new EventEmitter<void>();

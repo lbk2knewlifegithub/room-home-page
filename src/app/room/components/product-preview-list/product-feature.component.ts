@@ -27,7 +27,7 @@ import { Product } from '@lbk/room/models';
       </div>
 
       <!--    shop now-->
-      <lbk-shop-now class="block mt-14"></lbk-shop-now>
+      <lbk-shop-now class="block mt-14 xl:mt-10"></lbk-shop-now>
       <!--    end shop now-->
 
       <lbk-navigation
