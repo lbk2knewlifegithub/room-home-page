@@ -4,35 +4,27 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'lbk-about',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <!--about-->
-    <section class="container xl:mt-0 xl:flex-grow xl:row-span-2">
-      <div
-        class="grid space-y-16 xl:space-y-0 xl:grid-cols-10 xl:p-0 xl:h-full xl:w-full"
-      >
+    <section>
+      <div class="grid gap-16">
         <!--    dark-->
-        <div class="relative aspect-w-16 aspect-h-9 xl:col-span-3">
-          <img
-            class="absolute inset-0 w-full h-full"
-            src="/assets/images/image-about-dark.jpg"
-            alt="About Dark"
-          />
-        </div>
+        <img
+          class="aspect-video"
+          src="/assets/images/image-about-dark.jpg"
+          alt="About Dark"
+        />
         <!--    end dark-->
 
         <lbk-about-content></lbk-about-content>
 
         <!--    light-->
-        <div class="relative aspect-w-16 aspect-h-9 xl:col-span-3">
-          <img
-            class="absolute inset-0 w-full h-full"
-            src="/assets/images/image-about-light.jpg"
-            alt="About Light"
-          />
-        </div>
+        <img
+          class="aspect-video"
+          src="/assets/images/image-about-light.jpg"
+          alt="About Light"
+        />
         <!--    end light-->
       </div>
     </section>
-    <!--end about-->
   `,
 })
 export class AboutComponent {}

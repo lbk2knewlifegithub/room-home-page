@@ -5,35 +5,30 @@ import { Product } from '@lbk/room/models';
   selector: 'lbk-product-feature',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <!--discover-->
-    <section class="relative xl:col-span-5">
-      <div
-        class="p-[2rem] mt-16 flex items-center justify-center flex-col xl:h-full xl:mt-0"
-      >
-        <div class="max-w-lg">
-          <h1
-            class="text-3xl font-bold sm:text-4xl md:text-4xl lg:text-5xl xl:text-4xl"
-          >
-            {{ product.name }}
-          </h1>
-          <p
-            class="mt-6 text-sm text-skin-muted sm:text-base md:text-lg text:text-md lg:mt-16 xl:mt-8"
-            [innerHTML]="product.description"
-          ></p>
+    <div class="relative p-6">
+      <!-- text -->
+      <div>
+        <h1 class="text-3xl font-bold">
+          {{ product.name }}
+        </h1>
 
-          <!--    shop now-->
-          <!--    end shop now-->
-        </div>
+        <p class="mt-6 text-sm text-muted-300 font-semibold">
+          {{ product.description }}
+        </p>
+        <!-- end text -->
       </div>
+
+      <!--    shop now-->
+      <lbk-shop-now class="block mt-14"></lbk-shop-now>
+      <!--    end shop now-->
 
       <lbk-navigation
         (onNext)="onNext()"
         (onPrevious)="onPrevious()"
-        class="absolute bottom-0 left-0 hidden xl:block"
+        class="absolute bottom-0 left-0 hidden lg:block"
       >
       </lbk-navigation>
-    </section>
-    <!--end discover-->
+    </div>
   `,
 })
 export class ProductFeatureComponent {

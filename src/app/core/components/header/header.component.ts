@@ -4,10 +4,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'lbk-header',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <header class="fixed w-full z-50">
+    <header class="absolute w-full z-50">
       <nav
-        [ngClass]="{ 'bg-white': openNav }"
-        class="container flex items-center py-10 justify-between"
+        [ngClass]="ngClass"
+        class="container flex items-center py-10 justify-between duration-500"
       >
         <lbk-menu [(open)]="openNav" class="block"></lbk-menu>
 
@@ -21,5 +21,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   `,
 })
 export class HeaderComponent {
-  openNav = false;
+  openNav = true;
+
+  get ngClass() {
+    return {
+      'bg-white': this.openNav,
+      'delay-1000': !this.openNav,
+    };
+  }
 }

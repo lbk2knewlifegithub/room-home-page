@@ -6,33 +6,27 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   selector: 'lbk-product-carousel',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div>
-      <div class="grid xl:grid-cols-12">
-        <nav
-          class="relative aspect-w-9 aspect-h-9 md:aspect-w-16 xl:col-span-7"
-        >
-          <!-- product image -->
-          <owl-carousel-o [options]="customOptions">
-            <ng-container *ngFor="let product of products">
-              <ng-template carouselSlide [id]="product.name">
-                <img
-                  class="object-cover object-center"
-                  [src]="product.srcMobile"
-                  [alt]="product.name"
-                  [title]="product.name"
-                />
-              </ng-template>
-            </ng-container>
-          </owl-carousel-o>
-          <!-- end product image -->
+    <div class="relative">
+      <!-- product image -->
+      <owl-carousel-o #owl [options]="customOptions">
+        <ng-container *ngFor="let product of products">
+          <ng-template carouselSlide [id]="product.name">
+            <img
+              class="object-cover object-center"
+              [src]="product.srcMobile"
+              [alt]="product.name"
+              [title]="product.name"
+            />
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+      <!-- end product image -->
 
-          <lbk-navigation
-            (onNext)="onNext()"
-            (onPrevious)="onPrevious()"
-            class="absolute bottom-0 right-0 block xl:hidden"
-          ></lbk-navigation>
-        </nav>
-      </div>
+      <lbk-navigation
+        (onNext)="owl.next()"
+        (onPrevious)="owl.prev()"
+        class="absolute bottom-0 right-0 block z-50"
+      ></lbk-navigation>
     </div>
   `,
 })

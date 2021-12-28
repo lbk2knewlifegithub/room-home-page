@@ -4,17 +4,19 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'lbk-shop-now',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="flex items-center self-start mt-14">
-      <a class="uppercase tracking-[5px] text-xl" routerLink="/">Shop now</a>
+    <a routerLink="/" class="flex items-center gap-8 group">
+      <span class="uppercase tracking-[8px] font-semibold text-muted-900"
+        >Shop now</span
+      >
 
       <!-- arrow icon -->
       <img
-        class="ml-8"
+        class="duration-300 group-hover:translate-x-5"
         src="/assets/images/icon-arrow.svg"
         alt="Arrow Long Left"
       />
       <!-- end arrow icon -->
-    </div>
+    </a>
   `,
 })
 export class ShopNowComponent {}

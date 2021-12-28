@@ -7,13 +7,14 @@ import { Product } from '../models';
   selector: 'lbk-room-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <main>
+    <main class="space-y-20">
       <lbk-product-preview-list
+        class="block"
         *ngIf="products$ | async as products"
         [products]="products"
       ></lbk-product-preview-list>
 
-      <!-- <lbk-about></lbk-about> -->
+      <lbk-about class="block"></lbk-about>
     </main>
   `,
 })

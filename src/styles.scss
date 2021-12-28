@@ -12,9 +12,29 @@
     --white: 0, 0%, 100%;
     --very-dark-gray: 0, 0%, 27%;
   }
+}
 
-  //CUSTOM APPLY HERE
-  .btn {
-    @apply rounded-md px-5 py-6;
+@layer components {
+  .animate-link {
+    position: relative;
+    display: inline-block;
+
+    &:hover:before {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      transition: transform 0.3s ease-in-out;
+      bottom: 0;
+      left: 50%;
+      height: 2px;
+      background: black;
+      width: 80%;
+      opacity: 0;
+      transform: translate(-50%, 10px);
+    }
   }
 }
