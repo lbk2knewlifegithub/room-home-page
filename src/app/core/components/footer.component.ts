@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'lbk-footer',
   template: `
-    <footer @slideInUpOnEnter class="relative">
+    <footer class="relative">
       <p class="text-center text-xs">
         Challenge by
         <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"

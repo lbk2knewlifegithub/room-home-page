@@ -16,53 +16,40 @@ export function listAnimation(option?: CustomAnimation) {
   return trigger(name ?? 'listAnimation', [
     transition(
       ':enter',
-      [
+      group([
+        animateChild(),
         query(
           '*',
           [
-            animateChild(),
-            stagger(
-              100,
-              group([
-                style({ opacity: 0, transform: 'translateY(-100%)' }),
-                animate(
-                  '{{duration}}ms {{delayEnter}}ms {{timing}}',
-                  style({ opacity: 1, transform: 'translateY(0)' })
-                ),
-              ])
-            ),
+            style({ opacity: 0, transform: 'translateY(-100%)' }),
+            stagger(100, [
+              animate('{{duration}}ms {{delayEnter}}ms {{timing}}'),
+            ]),
           ],
           { optional: true }
         ),
-      ],
+      ]),
       {
         params: { delayEnter, timing, duration },
       }
     ),
-
     transition(
       ':leave',
-      [
-        // each time the binding value changes
+      group([
+        animateChild(),
         query(
           '*',
-          [
-            animateChild(),
-            stagger(
-              100,
-              group([
-                animate(
-                  '{{duration}}ms {{delayLeave}}ms {{timing}}',
-                  style({ opacity: 0, transform: 'translateY(100%)' })
-                ),
-              ])
-            ),
-          ],
-          {
-            optional: true,
-          }
+          group([
+            stagger(100, [
+              animate(
+                '{{duration}}ms {{delayLeave}}ms {{timing}}',
+                style({ opacity: 0, transform: 'translateY(100%)' })
+              ),
+            ]),
+          ]),
+          { optional: true }
         ),
-      ],
+      ]),
       {
         params: { delayLeave, timing, duration },
       }

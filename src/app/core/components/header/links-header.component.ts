@@ -1,10 +1,16 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { listAnimation } from '@lbk/shared/animations';
 
 @Component({
   selector: 'lbk-links-header',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <ul [style.color]="color" class="flex font-bold gap-5 md:gap-8 lg:gap-10">
+    <ul
+      *ngIf="open"
+      @listAnimation
+      [style.color]="color"
+      class="flex font-bold gap-5 md:gap-8 lg:gap-10"
+    >
       <li>
         <a [ngClass]="ngClass" class="animate-link " routerLink="/">home</a>
       </li>
@@ -20,9 +26,11 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
       </li>
     </ul>
   `,
+  animations: [listAnimation()],
 })
 export class LinksHeaderComponent {
   @Input() color: 'white' | 'black' = 'black';
+  @Input() open!: boolean;
 
   get ngClass() {
     return {

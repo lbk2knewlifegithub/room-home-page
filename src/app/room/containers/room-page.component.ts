@@ -1,8 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import * as fromData from '@lbk/room/data';
-import {
-  lightSpeedInOnEnterAnimation
-} from 'angular-animations';
 import { Observable, of } from 'rxjs';
 import { Product } from '../models';
 
@@ -10,7 +7,7 @@ import { Product } from '../models';
   selector: 'lbk-room-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <main @lightSpeedInOnEnter class="container-large xl:h-[800px]">
+    <main class="container-large xl:h-[800px]">
       <lbk-product-preview-list
         class="block xl:h-[65%] overflow-hidden"
         *ngIf="products$ | async as products"
@@ -20,8 +17,6 @@ import { Product } from '../models';
       <lbk-about class="block xl:h-[35%]"></lbk-about>
     </main>
   `,
-
-  animations: [lightSpeedInOnEnterAnimation()],
 })
 export class RoomPageComponent implements OnInit {
   products$!: Observable<Product[]>;

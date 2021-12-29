@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { listAnimation } from '@lbk/shared/animations';
 
 @Component({
   selector: 'lbk-nav-mobile',
@@ -12,10 +13,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
       <div class="w-full flex justify-center">
         <lbk-logo *ngIf="!openNav"></lbk-logo>
-        <lbk-links-header *ngIf="openNav"></lbk-links-header>
+        <lbk-links-header [open]="openNav"></lbk-links-header>
       </div>
     </nav>
   `,
+  animations: [listAnimation()],
 })
 export class NavMobileComponent {
   openNav = false;
