@@ -13,7 +13,7 @@ import { listAnimation } from '@lbk/shared/animations';
 
       <div class="w-full flex justify-center">
         <lbk-logo *ngIf="!openNav"></lbk-logo>
-        <lbk-links-header [open]="openNav"></lbk-links-header>
+        <lbk-links-header *ngIf="openNav" @listAnimation></lbk-links-header>
       </div>
     </nav>
   `,
@@ -25,7 +25,7 @@ export class NavMobileComponent {
   get ngClass() {
     return {
       'bg-white gap-10': this.openNav,
-      'delay-1000': !this.openNav,
+      'delay-900': !this.openNav,
     };
   }
 }

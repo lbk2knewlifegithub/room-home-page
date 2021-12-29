@@ -35,21 +35,12 @@ export function listAnimation(option?: CustomAnimation) {
     ),
     transition(
       ':leave',
-      group([
-        animateChild(),
-        query(
-          '*',
-          group([
-            stagger(100, [
-              animate(
-                '{{duration}}ms {{delayLeave}}ms {{timing}}',
-                style({ opacity: 0, transform: 'translateY(100%)' })
-              ),
-            ]),
-          ]),
-          { optional: true }
+      [
+        animate(
+          '{{duration}}ms {{delayLeave}}ms {{timing}}',
+          style({ opacity: 0, transform: 'translateY(100%)' })
         ),
-      ]),
+      ],
       {
         params: { delayLeave, timing, duration },
       }
